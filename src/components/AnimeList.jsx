@@ -19,13 +19,11 @@ export default function AnimeList({ animes, setAnimes }) {
       .catch(console.error);
   }, [setAnimes]);
 
-  console.log(selectedAnime)
-
   return (
     <>
-      {!animes ? 
+      {!animes ?
         <h1>Loading...</h1>
-       : 
+        :
         <Container fluid>
           <Row>
             {animes.map((element) => (
