@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import AnimeDelete from "./AnimeDelete";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
@@ -28,9 +29,21 @@ export default function AnimeList({ animes, setAnimes }) {
           <Row>
             {animes.map((element) => (
               <Col sm={12} md={4} lg={3} key={element._id}>
-                <Card onClick={() => { setSelectedAnime(element); handleShow() }} className="each-card">                  <Image src={element.image} className="anime-image" />
+                <Card className="each-card">
+                  <Image 
+                  onClick={() => { setSelectedAnime(element); handleShow() }} src={element.image} className="anime-image" 
+                  />
                   <h2>{element.title}</h2>
+                  {/* <Row>
+                    <Col> */}
+                  <AnimeDelete
+                    setAnimes={setAnimes}
+                    animeId={element._id}
+                  />
+                  {/* </Col>
+                  </Row> */}
                 </Card>
+
               </Col>
             ))}
           </Row>

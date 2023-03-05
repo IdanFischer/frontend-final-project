@@ -1,8 +1,8 @@
 .anime-image {
   aspect-ratio: 16 / 9;
+  cursor: pointer;
 }
 
 .each-card {
   margin-bottom: 20px;
-  cursor: pointer;
 }

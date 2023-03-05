@@ -8,11 +8,26 @@ import "./adminpost.css"
 export default function AdminPost({ setAnimes }) {
   const [title, setTitle] = useState("")
   const [info, setInfo] = useState("")
-  const [image, setImage] = useState("")
+  const [image, setImage] = useState()
   const [review, setReview] = useState("")
   const [rating, setRating] = useState("")
 
-  console.log({rating})
+  function convertFile(files) {
+    if (files) {
+      // picks the first file from all the files selected
+      const fileRef = files[0] || ""
+      // picks the type so that it can send the right one to the database
+      const fileType = fileRef.type || ""
+      // sets reader as a new FileReader instance 
+      const reader = new FileReader()
+      // converts fileref (the rile) to a binary string
+      reader.readAsBinaryString(fileRef)
+      reader.onload = (ev) => {
+        // convert it to base64
+        setImage(`data:${fileType};base64,${window.btoa(ev.target.result)}`)
+      }
+    }
+  }
 
   const handleSelect = e => {
     setRating(e)
@@ -49,6 +64,7 @@ export default function AdminPost({ setAnimes }) {
           <Form.Control
             name="title"
             type="text"
+            required={true}
             placeholder="Title of the Anime"
             value={title}
             className="p-2"
@@ -61,11 +77,11 @@ export default function AdminPost({ setAnimes }) {
           <Dropdown onSelect={handleSelect} className>
             <Dropdown.Toggle variant className="dropdown-margin">
               {!rating
-              ? <p className="d-inline">Please Select One</p>
-              : <p className="d-inline">{rating}</p>
+                ? <p className="d-inline">Please Select One</p>
+                : <p className="d-inline">{rating}</p>
               }
             </Dropdown.Toggle>
-                  
+
             <Dropdown.Menu>
               <Dropdown.Item eventKey="1">1</Dropdown.Item>
               <Dropdown.Item eventKey="2">2</Dropdown.Item>
@@ -80,11 +96,11 @@ export default function AdminPost({ setAnimes }) {
           <Form.Label>Image</Form.Label>
           <Form.Control
             name="Image"
-            type="text"
+            type="file"
+            required={true}
             placeholder="Cover of the Anime"
-            value={image}
             className="p-2"
-            onChange={e => setImage(e.target.value)}
+            onChange={e => convertFile(e.target.files)}
           />
         </Form.Group>
 
@@ -93,6 +109,7 @@ export default function AdminPost({ setAnimes }) {
           <Form.Control
             name="Synopsis"
             type="text"
+            required={true}
             placeholder="Brief Synopsis of the Anime!"
             value={info}
             className="p-2"
@@ -105,16 +122,18 @@ export default function AdminPost({ setAnimes }) {
           <Form.Control
             name="review"
             type="text"
+            required={true}
             placeholder="What's Your Thought's on the Anime?"
             value={review}
             className="p-2"
             onChange={e => setReview(e.target.value)}
           />
         </Form.Group>
-        <Button className="p-2 m-auto mt-2" onClick={handleSubmit}>
+        <Button className="p-2 m-auto mt-2"
+          onClick={handleSubmit}
+        >
           Submit
         </Button>
-
       </Form>
 
     </>
