@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form"
 import Dropdown from "react-bootstrap/Dropdown"
 
 
-export default function AnimeEdit({ animeId, setAnimes, handleSelect, convertFile }) {
+export default function AnimeEdit({ animeId, setAnimes }) {
 
   const [title, setTitle] = useState("")
   const [info, setInfo] = useState("")
@@ -33,6 +33,9 @@ export default function AnimeEdit({ animeId, setAnimes, handleSelect, convertFil
         setImage(`data:${fileType};base64,${window.btoa(ev.target.result)}`)
       }
     }
+  }
+  const handleSelect = e => {
+    setRating(e)
   }
 
   const handleEdit = () => {

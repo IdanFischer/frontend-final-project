@@ -136,12 +136,6 @@ export default function AdminPost({ setAnimes }) {
           Submit
         </Button>
       </Form>
-      <div className="d-none">
-        <AnimeEdit
-          handleSelect={handleSelect}
-          convertFile={convertFile}
-        />
-      </div>
     </>
   )
 }

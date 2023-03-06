@@ -31,23 +31,25 @@ export default function AnimeList({ animes, setAnimes }) {
             {animes.map((element) => (
               <Col sm={12} md={4} lg={3} key={element._id}>
                 <Card className="each-card">
-                  <Image 
-                  onClick={() => { setSelectedAnime(element); handleShow() }} src={element.image} className="anime-image" 
+                  <Image
+                    onClick={() => { setSelectedAnime(element); handleShow() }} src={element.image} className="anime-image"
                   />
                   <h2>{element.title}</h2>
-                  {/* <Row>
-                    <Col> */}
-                  <AnimeDelete
-                    setAnimes={setAnimes}
-                    animeId={element._id}
-                  />
-                  <AnimeEdit 
-                 setAnimes={setAnimes}
-                 selectedAnime={selectedAnime}
-                 animeId={element._id}
-                  />
-                  {/* </Col>
-                  </Row> */}
+                  <Row className="justify-content-center">
+                    <Col xs={6} className="text-center">
+                      <AnimeDelete
+                        setAnimes={setAnimes}
+                        animeId={element._id}
+                      />
+
+                    <AnimeEdit
+                      setAnimes={setAnimes}
+                      selectedAnime={selectedAnime}
+                      animeId={element._id}
+                    />    
+                    </Col>
+                    
+                  </Row>
                 </Card>
 
               </Col>
