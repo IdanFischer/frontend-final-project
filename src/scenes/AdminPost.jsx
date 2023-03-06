@@ -3,6 +3,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "./adminpost.css"
+import AnimeEdit from "../components/AnimeEdit";
 
 
 export default function AdminPost({ setAnimes }) {
@@ -135,7 +136,12 @@ export default function AdminPost({ setAnimes }) {
           Submit
         </Button>
       </Form>
-
+      <div className="d-none">
+        <AnimeEdit
+          handleSelect={handleSelect}
+          convertFile={convertFile}
+        />
+      </div>
     </>
   )
 }

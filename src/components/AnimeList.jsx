@@ -5,6 +5,7 @@ import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "./animelist.css";
+import AnimeEdit from "./AnimeEdit";
 
 export default function AnimeList({ animes, setAnimes }) {
   const [selectedAnime, setSelectedAnime] = useState(null);
@@ -39,6 +40,11 @@ export default function AnimeList({ animes, setAnimes }) {
                   <AnimeDelete
                     setAnimes={setAnimes}
                     animeId={element._id}
+                  />
+                  <AnimeEdit 
+                 setAnimes={setAnimes}
+                 selectedAnime={selectedAnime}
+                 animeId={element._id}
                   />
                   {/* </Col>
                   </Row> */}
