@@ -1,8 +1,32 @@
 .anime-image {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 3 / 4;
   cursor: pointer;
+}
+
+.border-image {
+  border: 1px solid black;
 }
 
 .each-card {
   margin-bottom: 20px;
+  border: 3px solid ;
 }
+
+#homer {
+  position: fixed;
+  opacity: 1;
+  bottom: 0;
+  left: 10px;
+  padding: 10px;
+}
+
+#homer a:link,
+#homer a:visited {
+  color: rgb(164, 164, 235);
+  text-decoration: none;
+}
+
+#homer a:hover {
+  color: rgb(195, 0, 255);
+}
+

@@ -6,7 +6,7 @@ export default function Home() {
   const [animes, setAnimes] = useState()
   return (
     <>
-      <h1>The One Start Is Real</h1>
+      <h1 className="outside-text text-center">The Anime Analysts</h1>
       <AnimeList 
         animes={animes}
         setAnimes={setAnimes}/>

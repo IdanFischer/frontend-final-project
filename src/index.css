@@ -5,9 +5,44 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  height: 100vh;
+  background-image: url("./assets/images/bgAnime.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+.outside-text {
+  color: aqua;
+  font-size: clamp(3rem, 4vw, 5rem);
+}
+
+.outside-text-form {
+  color: teal;
+  font-size: clamp(2.3rem, 3vw, 3.5rem);
+}
+
+.outside-text-two {
+  color: rgb(191, 51, 251);
+  font-size: clamp(1.7rem, 2.3vw, 2.7rem);
+  margin-top: 10px;
+}
+
+.outside-text-three {
+  color: rgb(191, 51, 251);
+  font-size: clamp(1.7rem, 2.4vw, 2.7rem);
+}
+
+

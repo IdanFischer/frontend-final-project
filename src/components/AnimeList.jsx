@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import AnimeDelete from "./AnimeDelete";
+import AnimeEdit from "./AnimeEdit";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "./animelist.css";
-import AnimeEdit from "./AnimeEdit";
 
 export default function AnimeList({ animes, setAnimes }) {
   const [selectedAnime, setSelectedAnime] = useState(null);
@@ -24,7 +24,7 @@ export default function AnimeList({ animes, setAnimes }) {
   return (
     <>
       {!animes ?
-        <h1>Loading...</h1>
+        <h1 className="outside-text text-center">Loading...</h1>
         :
         <Container fluid>
           <Row>
@@ -34,7 +34,8 @@ export default function AnimeList({ animes, setAnimes }) {
                   <Image
                     onClick={() => { setSelectedAnime(element); handleShow() }} src={element.image} className="anime-image"
                   />
-                  <h2>{element.title}</h2>
+                  <div className="border-image"></div>
+                  <h2 className="text-center">{element.title}</h2>
                   <Row className="justify-content-center">
                     <Col xs={6} className="text-center">
                       <AnimeDelete
@@ -46,7 +47,7 @@ export default function AnimeList({ animes, setAnimes }) {
                       setAnimes={setAnimes}
                       selectedAnime={selectedAnime}
                       animeId={element._id}
-                    />    
+                    />
                     </Col>
                     
                   </Row>
@@ -64,7 +65,7 @@ export default function AnimeList({ animes, setAnimes }) {
             <Modal.Title>{selectedAnime.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <p>{selectedAnime.info}</p> <p>⭐️{selectedAnime.rating}</p> <p>{selectedAnime.review}</p>
+            <p>{selectedAnime.info}</p> <p>⭐️{selectedAnime.rating}⭐️</p> <p>{selectedAnime.review}</p>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="primary" onClick={handleClose}>
@@ -73,6 +74,7 @@ export default function AnimeList({ animes, setAnimes }) {
           </Modal.Footer>
         </Modal>
       )}
+
     </>
   );
 }

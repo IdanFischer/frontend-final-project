@@ -57,11 +57,11 @@ export default function AdminPost({ setAnimes }) {
 
 
   return (
-    <>
-      <h1>Add a Card Here!</h1>
+    <div className="form-container p-lg-3 p-md-3 p-sm-3">
+      <h1 className="outside-text-form ms-2">Add a Card Here!</h1>
       <Form>
         <Form.Group>
-          <Form.Label>Title</Form.Label>
+          <Form.Label className="outside-text-three ms-2">Title</Form.Label>
           <Form.Control
             name="title"
             type="text"
@@ -74,27 +74,27 @@ export default function AdminPost({ setAnimes }) {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label>Rating</Form.Label>
+          <Form.Label className="outside-text-two ms-2 text ">Rating</Form.Label>
           <Dropdown onSelect={handleSelect} className>
-            <Dropdown.Toggle variant className="dropdown-margin">
+            <Dropdown.Toggle variant="light" className="rating-drop" >
               {!rating
-                ? <p className="d-inline">Please Select One</p>
-                : <p className="d-inline">{rating}</p>
+                ? <p className="d-inline">Please Select One of the Options </p>
+                : <p className="d-inline">{rating} </p>
               }
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item eventKey="1">1</Dropdown.Item>
-              <Dropdown.Item eventKey="2">2</Dropdown.Item>
-              <Dropdown.Item eventKey="3">3</Dropdown.Item>
-              <Dropdown.Item eventKey="4">4</Dropdown.Item>
-              <Dropdown.Item eventKey="5">5</Dropdown.Item>
+              <Dropdown.Item eventKey="1: Never Watch it ever in your life if you know what's best for you">1: Never watch it ever in your life if you know what's best for you</Dropdown.Item>
+              <Dropdown.Item eventKey="2: its worth it in the backlog at the very least">2: its worth putting it in the backlog at the very least</Dropdown.Item>
+              <Dropdown.Item eventKey="3: Not too bad but can for sure be better: back of the list">3: Not too bad but can for sure be better: back of the list</Dropdown.Item>
+              <Dropdown.Item eventKey="4: Was pretty good: should be the next watch or two">4: Was pretty good: should be the next watch or two</Dropdown.Item>
+              <Dropdown.Item eventKey="5: HOLY MOLY ANTHONY GUACAMOLE THAT WAS AMAZING WATCH IT RIGHT NOW">5: HOLY MOLY ANTHONY GUACAMOLE THAT WAS AMAZING WATCH IT RIGHT NOW</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </Form.Group>
 
         <Form.Group>
-          <Form.Label>Image</Form.Label>
+          <Form.Label className="outside-text-two ms-2">Image</Form.Label>
           <Form.Control
             name="Image"
             type="file"
@@ -106,7 +106,7 @@ export default function AdminPost({ setAnimes }) {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label>Synopsis</Form.Label>
+          <Form.Label className="outside-text-two ms-2">Synopsis</Form.Label>
           <Form.Control
             name="Synopsis"
             type="text"
@@ -119,7 +119,7 @@ export default function AdminPost({ setAnimes }) {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label>Review</Form.Label>
+          <Form.Label className="outside-text-two ms-2">Review</Form.Label>
           <Form.Control
             name="review"
             type="text"
@@ -130,12 +130,12 @@ export default function AdminPost({ setAnimes }) {
             onChange={e => setReview(e.target.value)}
           />
         </Form.Group>
-        <Button className="p-2 m-auto mt-2"
+        <Button className="p-2 m-auto mt-3 btn-lg"
           onClick={handleSubmit}
         >
           Submit
         </Button>
       </Form>
-    </>
+    </div>
   )
 }
