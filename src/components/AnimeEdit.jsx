@@ -74,7 +74,7 @@ export default function AnimeEdit({ animeId, setAnimes }) {
       </Button>
       <Modal show={show} onHide={handleClose} size="xl">
         <Modal.Header closeButton>
-          <Modal.Title className="outside-text-edit-form ms-2">Add a Card Here!</Modal.Title>
+          <Modal.Title className="outside-text-edit-form ms-2">Edit Your Card Here!</Modal.Title>
         </Modal.Header>
         <div className="form-container-edit">
           <Form>

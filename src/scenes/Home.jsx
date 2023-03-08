@@ -2,12 +2,13 @@ import AnimeList from "../components/AnimeList";
 import { useState } from "react";
 import AnimeDelete from "../components/AnimeDelete";
 
-export default function Home() {
+export default function Home({ url }) {
   const [animes, setAnimes] = useState()
+  console.log(`home url: ${url}`)
   return (
     <>
-      <h1 className="outside-text text-center">The Anime Analysts</h1>
       <AnimeList 
+        url={url}
         animes={animes}
         setAnimes={setAnimes}/>
     </>
