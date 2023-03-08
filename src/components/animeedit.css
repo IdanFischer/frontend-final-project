@@ -6,6 +6,15 @@
 }
 
 .outside-text-edit-form {
-  color: teal;
+  color: crimson;
+  font-weight: 700;
   font-size: clamp(1.9rem, 2.3vw, 2.5rem) !important;
+}
+
+.modal-body-edit {
+  background-color: plum;
+}
+
+.modal-head-edit {
+  background-color: rgb(74, 218, 187);
 }

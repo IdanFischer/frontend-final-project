@@ -13,7 +13,7 @@ export default function AnimeList({ animes, setAnimes, url }) {
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-  console.log("Anime List url: ",url)
+  // console.log("Anime List url: ",url)
 
   useEffect(() => {
     // 127.0.0.1:5002
@@ -22,7 +22,7 @@ export default function AnimeList({ animes, setAnimes, url }) {
       .then((res) => res.json())
       .then(setAnimes)
       .catch(console.error);
-  }, [setAnimes]);
+  }, [setAnimes, url]);
 
   return (
     <>
@@ -42,11 +42,13 @@ export default function AnimeList({ animes, setAnimes, url }) {
                   <Row className="justify-content-center">
                     <Col xs={6} className="text-center">
                       <AnimeDelete
+                        url={url}
                         setAnimes={setAnimes}
                         animeId={element._id}
                       />
 
                     <AnimeEdit
+                      url={url}
                       setAnimes={setAnimes}
                       selectedAnime={selectedAnime}
                       animeId={element._id}
@@ -67,7 +69,7 @@ export default function AnimeList({ animes, setAnimes, url }) {
           <Modal.Header closeButton>
             <Modal.Title className="each-anime-title">{selectedAnime.title}</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body className="modal-body-each-anime">
             <p className="each-anime-body">{selectedAnime.info}</p> <p className="each-anime-body">⭐️{selectedAnime.rating}⭐️</p> <p className="each-anime-body">{selectedAnime.review}</p>
           </Modal.Body>
           <Modal.Footer>

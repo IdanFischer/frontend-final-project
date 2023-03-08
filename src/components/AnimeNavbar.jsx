@@ -10,7 +10,7 @@ export default function AnimeNavbar({ url, setUrl }) {
     setUrl(e)
   }
 
-  console.log("NavBar url: ", url)
+  // console.log("NavBar url: ", url)
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
@@ -20,9 +20,10 @@ export default function AnimeNavbar({ url, setUrl }) {
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/home">Home</Nav.Link>
             <Nav.Link as={Link} to="/post">Create</Nav.Link>
-            <NavDropdown title="Sort By">
-              <NavDropdown.Item eventKey="date" onClick={() => handleSelectSort}>Date</NavDropdown.Item>
-              <NavDropdown.Item eventKey="rating" onClick={() => handleSelectSort}>Rating</NavDropdown.Item>
+            <Nav.Link as={Link} to="/aboutme">About Me</Nav.Link>
+            <NavDropdown title="Sort By" onSelect={handleSelectSort}>
+              <NavDropdown.Item eventKey="date">Date</NavDropdown.Item>
+              <NavDropdown.Item eventKey="rating">Rating</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

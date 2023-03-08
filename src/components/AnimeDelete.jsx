@@ -2,10 +2,10 @@ import { Button } from "react-bootstrap"
 import Image from "react-bootstrap/Image"
 
 
-export default function AnimeDelete({ setAnimes, animeId }) {
+export default function AnimeDelete({ setAnimes, animeId, url }) {
 
   const handleDelete = () => {
-    fetch(`https://final-project-backend-if.web.app/anime/${animeId}`, {
+    fetch(`https://final-project-backend-if.web.app/anime/${url}/${animeId}`, {
       method: "DELETE",
       headers: {
         'Content-Type': 'application/json'

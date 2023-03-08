@@ -7,7 +7,7 @@ import Dropdown from "react-bootstrap/Dropdown"
 import "./animeedit.css"
 
 
-export default function AnimeEdit({ animeId, setAnimes }) {
+export default function AnimeEdit({ animeId, setAnimes, url }) {
 
   const [title, setTitle] = useState("")
   const [info, setInfo] = useState("")
@@ -47,7 +47,7 @@ export default function AnimeEdit({ animeId, setAnimes }) {
   }
 
   const handleEdit = () => {
-    fetch(`https://final-project-backend-if.web.app/anime/${animeId}`, {
+    fetch(`https://final-project-backend-if.web.app/anime/${url}/${animeId}`, {
       method: "PATCH",
       headers: {
         'Content-Type': 'application/json'
@@ -73,9 +73,10 @@ export default function AnimeEdit({ animeId, setAnimes }) {
         />
       </Button>
       <Modal show={show} onHide={handleClose} size="xl">
-        <Modal.Header closeButton>
+        <Modal.Header className="modal-head-edit" closeButton>
           <Modal.Title className="outside-text-edit-form ms-2">Edit Your Card Here!</Modal.Title>
         </Modal.Header>
+        <Modal.Body className="modal-body-edit">
         <div className="form-container-edit">
           <Form>
             <Form.Group>
@@ -94,7 +95,7 @@ export default function AnimeEdit({ animeId, setAnimes }) {
             <Form.Group>
               <Form.Label className="outside-text-two ms-2 text ">Rating</Form.Label>
               <Dropdown onSelect={handleSelect} className>
-                <Dropdown.Toggle variant="light" className="rating-drop" >
+                <Dropdown.Toggle variant="light" className="rating-drop text-start" >
                   {!rating
                     ? <p className="d-inline">Please Select One of the Options </p>
                     : <p className="d-inline">{rating} </p>
@@ -151,6 +152,7 @@ export default function AnimeEdit({ animeId, setAnimes }) {
             </Form.Group>
           </Form>
         </div>
+        </Modal.Body>
         <Modal.Footer className="justify-content-between">
           <Button className="p-2 mt-3 btn-lg" onClick={handleClose}>
             Close

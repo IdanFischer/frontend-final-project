@@ -3,9 +3,9 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Image from "react-bootstrap/Image";
-import "./adminpost.css"
-import AnimeEdit from "../components/AnimeEdit";
 import homerDrawing from "../assets/images/HomerDrawing.svg"
+import "./adminpost.css"
+import { toast } from "react-toastify";
 
 
 export default function AdminPost({ setAnimes }) {
@@ -36,25 +36,35 @@ export default function AdminPost({ setAnimes }) {
     setRating(e)
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
     fetch("https://final-project-backend-if.web.app/anime", {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ title, info, image, review, rating })
+      body: JSON.stringify({ title, info, image, review, rating }),
     })
-      .then(res => res.json())
-      .then(setAnimes)
-      .catch(console.error)
-
-    setTitle("")
-    setInfo("")
-    setImage("")
-    setReview("")
-    setRating("")
-  }
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Fetch request failed");
+        }
+        return response.json();
+      })
+      .then(() => {
+        toast.success("Your Post Was Submitted!");
+        setTitle("");
+        setInfo("");
+        setImage("");
+        setReview("");
+        setRating("");
+      })
+      .catch((err) => {
+        console.error(err);
+        toast.error("Post Failed...");
+      });
+  };
 
 
 
@@ -77,9 +87,9 @@ export default function AdminPost({ setAnimes }) {
           </Form.Group>
 
           <Form.Group>
-            <Form.Label className="outside-text-two ms-2 text ">Rating</Form.Label>
+            <Form.Label className="outside-text-two ms-2">Rating</Form.Label>
             <Dropdown onSelect={handleSelect} className>
-              <Dropdown.Toggle variant="light" className="rating-drop" >
+              <Dropdown.Toggle variant="light" className="rating-drop text-start" >
                 {!rating
                   ? <p className="d-inline">Please Select One of the Options </p>
                   : <p className="d-inline">{rating} </p>

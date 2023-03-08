@@ -4,7 +4,7 @@ import AnimeDelete from "../components/AnimeDelete";
 
 export default function Home({ url }) {
   const [animes, setAnimes] = useState()
-  console.log(`home url: ${url}`)
+  // console.log(`home url: ${url}`)
   return (
     <>
       <AnimeList 
