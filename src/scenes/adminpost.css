@@ -1,6 +1,16 @@
+.background-image-post {
+  background-image: url(../assets/images/background-anime-city.webp);
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
 .form-container {
   width: 80%;
   margin: 0 auto;
+  margin-top: 15px;
   background-color: rgba(255, 255, 255, 0.7);
   padding: 20px;
   border-radius: 20px;

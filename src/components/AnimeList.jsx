@@ -26,13 +26,14 @@ export default function AnimeList({ animes, setAnimes, url }) {
 
   return (
     <>
+    <div className="background-image-list">
       {!animes ?
         <h1 className="outside-text text-center">Loading...</h1>
         :
         <Container fluid>
           <Row>
             {animes.map((element) => (
-              <Col sm={12} md={4} lg={3} key={element._id}>
+              <Col sm={6} md={4} lg={3} key={element._id}>
                 <Card className="each-card border border-2 border-primary">
                   <Image
                     onClick={() => { setSelectedAnime(element); handleShow() }} src={element.image} className="anime-image"
@@ -70,15 +71,21 @@ export default function AnimeList({ animes, setAnimes, url }) {
             <Modal.Title className="each-anime-title">{selectedAnime.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body className="modal-body-each-anime">
-            <p className="each-anime-body">{selectedAnime.info}</p> <p className="each-anime-body">⭐️{selectedAnime.rating}⭐️</p> <p className="each-anime-body">{selectedAnime.review}</p>
+            <h2 className="each-anime-body-h2">Synopsis:</h2>
+            <p className="each-anime-body-p">{selectedAnime.info}</p> 
+            <h2 className="each-anime-body-h2">Rating:</h2>
+            <p className="each-anime-body-p">⭐️{selectedAnime.rating}⭐️</p> 
+            <h2 className="each-anime-body-h2">Review:</h2>
+            <p className="each-anime-body-p">{selectedAnime.review}</p>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="primary" onClick={handleClose}>
+            <Button className="" variant="primary" onClick={handleClose}>
               Close
             </Button>
           </Modal.Footer>
         </Modal>
       )}
+    </div>
 
     </>
   );

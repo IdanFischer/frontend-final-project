@@ -12,7 +12,7 @@ export default function AnimeNavbar({ url, setUrl }) {
 
   // console.log("NavBar url: ", url)
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="info" expand="lg">
       <Container fluid>
         <Navbar.Brand as={Link} to="/home" >The Anime Analysts</Navbar.Brand>
         <Navbar.Toggle />

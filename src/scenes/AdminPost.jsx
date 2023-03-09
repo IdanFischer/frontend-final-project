@@ -1,12 +1,11 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Image from "react-bootstrap/Image";
 import homerDrawing from "../assets/images/HomerDrawing.svg"
 import "./adminpost.css"
-import { toast } from "react-toastify";
-
 
 export default function AdminPost({ setAnimes }) {
   const [title, setTitle] = useState("")
@@ -23,7 +22,7 @@ export default function AdminPost({ setAnimes }) {
       const fileType = fileRef.type || ""
       // sets reader as a new FileReader instance 
       const reader = new FileReader()
-      // converts fileref (the rile) to a binary string
+      // converts fileref (the File) to a binary string
       reader.readAsBinaryString(fileRef)
       reader.onload = (ev) => {
         // convert it to base64
@@ -38,7 +37,7 @@ export default function AdminPost({ setAnimes }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     fetch("https://final-project-backend-if.web.app/anime", {
       method: "POST",
       headers: {
@@ -46,23 +45,26 @@ export default function AdminPost({ setAnimes }) {
       },
       body: JSON.stringify({ title, info, image, review, rating }),
     })
-      .then((response) => {
-        if (!response.ok) {
+      .then((res) => {
+        // Check if the res status is in the 200-299 range
+        if (!res.ok) {
+          // If the status is not in the 200-299 range, throw an error, which will direct the program to the nearest .catch
           throw new Error("Fetch request failed");
         }
-        return response.json();
+        // If the status is in the 200-299 range, parse the res as JSON
+        return res.json();
       })
       .then(() => {
         toast.success("Your Post Was Submitted!");
         setTitle("");
         setInfo("");
-        setImage("");
+        setImage();
         setReview("");
         setRating("");
       })
       .catch((err) => {
         console.error(err);
-        toast.error("Post Failed...");
+        toast.error("One or more input fields are empty...");
       });
   };
 
@@ -70,6 +72,7 @@ export default function AdminPost({ setAnimes }) {
 
   return (
     <>
+    <div className="background-image-post">
       <div className="form-container p-lg-3 p-md-3 p-sm-3">
         <h1 className="outside-text-form ms-2">Add a Card Here!</h1>
         <Form>
@@ -153,6 +156,7 @@ export default function AdminPost({ setAnimes }) {
       <div>
         <a href="https://idan-game.web.app/" target="_blank"><Image id="homers-ghost" src={homerDrawing} /></a>
       </div>
+    </div>
     </>
 
   )

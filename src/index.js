@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import "./fonts/anime-ace-woff/webfontkit-20230309-150151/stylesheet.css"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,8 +14,9 @@ root.render(
       <App />
       <ToastContainer
         position="top-right"
-        autoClose={5000}
+        autoClose={4000}
         hideProgressBar={false}
+        limit={5}
         newestOnTop={false}
         closeOnClick
         rtl={false}
