@@ -146,11 +146,13 @@ export default function AdminPost({ setAnimes }) {
               onChange={e => setReview(e.target.value)}
             />
           </Form.Group>
-          <Button className="p-2 m-auto mt-3 btn-lg"
+          <div className="d-flex justify-content-center">
+          <Button className="mt-3 btn-lg btn-post" variant="outline-danger"
             onClick={handleSubmit}
           >
             Submit
           </Button>
+          </div>
         </Form>
       </div>
       <div>

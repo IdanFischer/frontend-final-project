@@ -79,7 +79,7 @@ export default function AnimeList({ animes, setAnimes, url }) {
             <p className="each-anime-body-p">{selectedAnime.review}</p>
           </Modal.Body>
           <Modal.Footer>
-            <Button className="" variant="primary" onClick={handleClose}>
+            <Button className="btn-list" variant="outline-info" onClick={handleClose}>
               Close
             </Button>
           </Modal.Footer>
