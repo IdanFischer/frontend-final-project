@@ -10,7 +10,7 @@ import { signOut } from 'firebase/auth';
 import "./animenavbar.css"
 import { toast } from 'react-toastify';
 
-export default function AnimeNavbar({ url, setUrl, user }) {
+export default function AnimeNavbar({ url, setUrl, user, googleUser }) {
 
   let navigate = useNavigate()
 
@@ -50,6 +50,7 @@ export default function AnimeNavbar({ url, setUrl, user }) {
               :
               <Nav.Link as={Button} onSubmit={handleLogOut} className="logout-navbar">Logout</Nav.Link>
             }                          
+            <Nav.Item>{googleUser ? <p>Welcome {googleUser.displayName}</p> : <p>Welcome Guest!</p>}</Nav.Item>
           </Nav>
         </Navbar.Collapse>
       </Container>

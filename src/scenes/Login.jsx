@@ -1,4 +1,4 @@
-import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithRedirect } from "firebase/auth"
 import { auth } from "../App";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -26,7 +26,7 @@ export default function Signup({ user, setUser, setIsUser }) {
     try {
       // const _user = await signInWithPopup(auth, provider)
       const provider = new GoogleAuthProvider()
-      await signInWithPopup(auth, provider)
+      await signInWithRedirect(auth, provider)
       toast.success("Logged in")
       navigate("/home")
     }

@@ -27,7 +27,7 @@ export const auth = getAuth(app)
 function App() {
   const [url, setUrl] = useState("date")
   const [googleUser, setGoogleUser] = useState(false)
-  const [user, setUser] = useState(false)
+  const [user, setUser] = useState(false) 
   const [isUser, setIsUser] = useState(true)
 
   useEffect(() => {
@@ -50,10 +50,10 @@ function App() {
         user={user}
         url={url}
         setUrl={setUrl}
+        googleUser={googleUser}
         />
-        <h1>{user.displayName}</h1>
       <Routes>
-        <Route path='post' element={user
+        <Route path='post' element={user || googleUser
           ? <AdminPost />
           : isUser
             ? <Login user={user} setUser={setUser} setIsUser={setIsUser} />
