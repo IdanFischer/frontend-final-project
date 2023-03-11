@@ -7,7 +7,7 @@ export default function Home({ url }) {
   // console.log(`home url: ${url}`)
   return (
     <>
-      <AnimeList 
+      <AnimeList
         url={url}
         animes={animes}
         setAnimes={setAnimes}/>

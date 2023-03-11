@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { auth } from '../App';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -7,16 +8,26 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { signOut } from 'firebase/auth';
 import "./animenavbar.css"
+import { toast } from 'react-toastify';
 
-export default function AnimeNavbar({ url, setUrl }) {
-  const [user, setUser] = useState(false)
-  const [auth, setAuth] = useState()
+export default function AnimeNavbar({ url, setUrl, user }) {
+
+  let navigate = useNavigate()
+
   const handleSelectSort = e => {
     setUrl(e)
   }
 
   const handleLogOut = () => {
-    signOut(auth)
+    try {
+      signOut(auth)
+      toast.success("Logged Out!")
+      navigate("/login")
+    }
+    catch(err) {
+      toast.error("Not Logged in")
+      console.error(err)
+    }
   }
 
   // console.log("NavBar url: ", url)

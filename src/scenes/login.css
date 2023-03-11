@@ -1,7 +1,7 @@
-.background-image-list {
-  /* width: 100vw; */
+.background-image-login {
+  width: 100vw;
   height: 93.6vh;
-  background-image: url(../assets/images/background-anime-city.webp);
+  background-image: url(../assets/images/background-anime-tree.webp);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -9,62 +9,66 @@
   overflow: scroll;
 }
 
-.anime-image {
-  aspect-ratio: 3 / 4;
+.form-container-login {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 50px;
+  background-color: rgba(59, 81, 98, 0.75);
+  /* add in the blur form contatiner that joe had, see how it looks */
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.google-sign-in-button {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  justify-content: space-between;
+  -webkit-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  height: 100%;
+  position: relative;
+  width: 100%;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: background-color .218s, border-color .218s;
+  transition: background-color .218s, border-color .218s;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #dadce0;
+  color: #3c4043;
   cursor: pointer;
+  font-family: "Google Sans", arial, sans-serif;
+  font-size: 14px;
+  height: 40px;
+  letter-spacing: 0.25px;
+  outline: none;
+  overflow: hidden;
+  padding: 0 12px;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: auto;
 }
 
-.border-image {
-  border: 1px solid black;
-}
-
-.each-card {
-  margin-top: 20px;
-  /* border: 3px solid cyan; */
-}
-
-.each-anime-title {
-  font-size: clamp(2rem, 2.5vw, 3.5rem) !important;
-  font-family: bangers;
-  text-shadow: -3px -3px 1px #F8F005, 3px 3px 1px #00f6d1;
-
-}
-
-.anime-card-title {
-  font-size: clamp(2em, 2.5vw, 3rem);
-  font-family: bangers;
-  text-shadow: -3px -3px 1px #F8F005, 3px 3px 1px #00f6d1;
-}
-
-.each-anime-body-h2 {
-  font-size: clamp(2em, 2.5vw, 3rem);
-  font-family: bangers;
-  text-shadow: -3px -3px 1px #F8F005, 3px 3px 1px #00f6d1;
-}
-
-.each-anime-body-p {
-  color: rgb(18, 177, 229);
-  font-size: clamp(1.1rem, 1.2vw, 1.9rem);
-  font-family: anime_aceregular;
-  font-weight: 600;
-}
-
-.modal-body-each-anime {
-  background-color: lightyellow;
-}
-
-.btn-list,
-.btn-list:after {
+.btn-login,
+.btn-login:after {
   width: 150px;
   height: 76px;
   line-height: 78px;
   font-size: 20px;
   font-family: 'Bebas Neue', sans-serif;
-  background: linear-gradient(45deg, transparent 5%, #FF013C 5%);
+  background: linear-gradient(45deg, transparent 5%, #014dff 5%);
   border: 0;
   color: white !important;
   letter-spacing: 3px;
-  box-shadow: 6px 0px 0px #00E6F6;
+  box-shadow: 6px 0px 0px #FF013C;
   outline: transparent;
   position: relative;
   user-select: none;
@@ -72,27 +76,27 @@
   touch-action: manipulation;
 }
 
-.btn-list:after {
+.btn-login:after {
   --slice-0: inset(50% 50% 50% 50%);
   --slice-1: inset(80% -6px 0 0);
   --slice-2: inset(50% -6px 30% 0);
   --slice-3: inset(10% -6px 85% 0);
   --slice-4: inset(40% -6px 43% 0);
   --slice-5: inset(80% -6px 5% 0);
-  
-  content: 'Close';
+
+  content: 'Login';
   display: block;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #FF013C 5%);
-  text-shadow: -3px -3px 0px #F8F005, 3px 3px 0px #00E6F6;
+  background: linear-gradient(45deg, transparent 3%, #FF013C 3%, #FF013C 5%, #014dff 5%);
+  text-shadow: -3px -3px 0px #F8F005, 3px 3px 0px #00f6d1;
   clip-path: var(--slice-0);
 }
 
-.btn-list:hover:after {
+.btn-login:hover:after {
   animation: 1s glitch;
   animation-timing-function: steps(2, end);
 }
@@ -102,42 +106,52 @@
     clip-path: var(--slice-1);
     transform: translate(-20px, -10px);
   }
+
   10% {
     clip-path: var(--slice-3);
     transform: translate(10px, 10px);
   }
+
   20% {
     clip-path: var(--slice-1);
     transform: translate(-10px, 10px);
   }
+
   30% {
     clip-path: var(--slice-3);
     transform: translate(0px, 5px);
   }
+
   40% {
     clip-path: var(--slice-2);
     transform: translate(-5px, 0px);
   }
+
   50% {
     clip-path: var(--slice-3);
     transform: translate(5px, 0px);
   }
+
   60% {
     clip-path: var(--slice-4);
     transform: translate(5px, 10px);
   }
+
   70% {
     clip-path: var(--slice-2);
     transform: translate(-10px, 10px);
   }
+
   80% {
     clip-path: var(--slice-5);
     transform: translate(20px, -10px);
   }
+
   90% {
     clip-path: var(--slice-1);
     transform: translate(-10px, 0px);
   }
+
   100% {
     clip-path: var(--slice-1);
     transform: translate(0);
@@ -145,8 +159,9 @@
 }
 
 @media (min-width: 768px) {
-  .btn-list,
-  .btn-list:after {
+
+  .btn-login,
+  .btn-login:after {
     width: 200px;
     height: 86px;
     line-height: 88px;

@@ -1,7 +1,7 @@
 .background-image-post {
   width: 100vw;
-  height: 100vh;
-  background-image: url(../assets/images/background-anime-city-other.webp);
+  height: 93.6vh;
+  background-image: url(../assets/images/background-anime-neighborhood-other.webp);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -12,8 +12,9 @@
 .form-container {
   width: 80%;
   margin: 0 auto;
-  margin-top: 15px;
-  background-color: rgba(255, 255, 255, 0.65);
+  margin-top: 50px;
+  background-color: rgba(59, 81, 98, 0.75);
+  /* add in the blur form contatiner that joe had, see how it looks */
   padding: 20px;
   border-radius: 20px;
 }
@@ -34,7 +35,6 @@
 
 .outside-text-two {
   font-size: clamp(1.6rem, 2vw, 2.3em);
-  margin-top: 10px;
   font-family: Bangers;
   text-shadow: -2px -2px 2px #F8F005, 2px 2px 2px #00f6d1;
 
@@ -44,7 +44,6 @@
   font-size: clamp(1.6rem, 2vw, 2.3em);
   font-family: Bangers;
   text-shadow: -2px -2px 2px #F8F005, 2px 2px 2px #00f6d1;
-  margin-top: -10px;
 }
 
 #homers-ghost {
@@ -53,12 +52,16 @@
   bottom: 0;
   left: 10px;
   padding: 10px;
+  filter: invert(1);
+  transform: scaleX(-1);
+  opacity: 0.3;
 }
 
 #homers-ghost a:link,
 #homers-ghost a:visited {
   color: rgb(164, 164, 235);
   text-decoration: none;
+
 }
 
 #homers-ghost a:hover {

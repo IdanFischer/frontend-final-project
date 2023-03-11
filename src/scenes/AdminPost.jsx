@@ -4,6 +4,8 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Image from "react-bootstrap/Image";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import homerDrawing from "../assets/images/HomerDrawing.svg"
 import "./adminpost.css"
 
@@ -72,93 +74,103 @@ export default function AdminPost({ setAnimes }) {
 
   return (
     <>
-    <div className="background-image-post">
-      <div className="form-container p-lg-3 p-md-3 p-sm-3">
-        <h1 className="outside-text-form ms-2">Add a Card Here!</h1>
-        <Form>
-          <Form.Group>
-            <Form.Label className="outside-text-three ms-2">Title</Form.Label>
-            <Form.Control
-              name="title"
-              type="text"
-              required={true}
-              placeholder="Title of the Anime"
-              value={title}
-              className="p-2"
-              onChange={e => setTitle(e.target.value)}
-            />
-          </Form.Group>
+      <div className="background-image-post">
+        <div className="form-container p-lg-3 p-md-3 p-sm-3">
+          <h1 className="outside-text-form ms-2">Add a Card Here!</h1>
+          <Form>
+            <Form.Group >
+              <Form.Label className="outside-text-three ms-2">Title</Form.Label>
+              <Form.Control
+                name="title"
+                type="text"
+                required={true}
+                placeholder="Title of the Anime"
+                value={title}
+                className="p-2"
+                onChange={e => setTitle(e.target.value)}
+              />
+            </Form.Group>
 
-          <Form.Group>
-            <Form.Label className="outside-text-two ms-2">Rating</Form.Label>
-            <Dropdown onSelect={handleSelect} className>
-              <Dropdown.Toggle variant="light" className="rating-drop text-start" >
-                {!rating
-                  ? <p className="d-inline">Please Select One of the Options </p>
-                  : <p className="d-inline">{rating} </p>
-                }
-              </Dropdown.Toggle>
+            <Row>
+              <Form.Group as={Col} sm={12} lg={6}>
+                <Form.Label className="outside-text-two ms-2 ">Rating</Form.Label>
+                {/* mt-lg-4 */}
+                <Dropdown onSelect={handleSelect} className>
+                  <Dropdown.Toggle variant="light" className="rating-drop text-start p-2" >
+                    {!rating
+                      ? <p className="d-inline">Please Select One of the Options </p>
+                      : <p className="d-inline">{rating} </p>
+                    }
+                  </Dropdown.Toggle>
 
-              <Dropdown.Menu>
-                <Dropdown.Item eventKey="1: Never Watch it ever in your life if you know what's best for you">1: Never watch it ever in your life if you know what's best for you</Dropdown.Item>
-                <Dropdown.Item eventKey="2: its worth it in the backlog at the very least">2: its worth putting it in the backlog at the very least</Dropdown.Item>
-                <Dropdown.Item eventKey="3: Not too bad but can for sure be better: back of the list">3: Not too bad but can for sure be better: back of the list</Dropdown.Item>
-                <Dropdown.Item eventKey="4: Was pretty good: should be the next watch or two">4: Was pretty good: should be the next watch or two</Dropdown.Item>
-                <Dropdown.Item eventKey="5: HOLY MOLY ANTHONY GUACAMOLE THAT WAS AMAZING WATCH IT RIGHT NOW">5: HOLY MOLY ANTHONY GUACAMOLE THAT WAS AMAZING WATCH IT RIGHT NOW</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </Form.Group>
+                  <Dropdown.Menu>
+                    <Dropdown.Item eventKey="1: Never Watch it ever in your life if you know what's best for you">1: Never watch it ever in your life if you know what's best for you</Dropdown.Item>
+                    <Dropdown.Item eventKey="2: its worth it in the backlog at the very least">2: its worth putting it in the backlog at the very least</Dropdown.Item>
+                    <Dropdown.Item eventKey="3: Not too bad but can for sure be better: back of the list">3: Not too bad but can for sure be better: back of the list</Dropdown.Item>
+                    <Dropdown.Item eventKey="4: Was pretty good: should be the next watch or two">4: Was pretty good: should be the next watch or two</Dropdown.Item>
+                    <Dropdown.Item eventKey="5: HOLY MOLY ANTHONY GUACAMOLE THAT WAS AMAZING WATCH IT RIGHT NOW">5: HOLY MOLY ANTHONY GUACAMOLE THAT WAS AMAZING WATCH IT RIGHT NOW</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </Form.Group>
 
-          <Form.Group>
-            <Form.Label className="outside-text-two ms-2">Image</Form.Label>
-            <Form.Control
-              name="Image"
-              type="file"
-              required={true}
-              placeholder="Cover of the Anime"
-              className="p-2"
-              onChange={e => convertFile(e.target.files)}
-            />
-          </Form.Group>
+              <Form.Group as={Col} sm={12} lg={6}>
+                <Form.Label className="outside-text-two ms-2">Image</Form.Label>
+                {/* mt-lg-4 */}
+                <Form.Control
+                  name="Image"
+                  type="file"
+                  required={true}
+                  placeholder="Cover of the Anime"
+                  className="p-2"
+                  onChange={e => convertFile(e.target.files)}
+                />
+              </Form.Group>
+            </Row>
+            <Row>
+              <Form.Group as={Col} sm={12} lg={6}>
+                <Form.Label className="outside-text-two ms-2">Synopsis</Form.Label>
+                {/* mt-lg-4 */}
+                <Form.Control
+                  name="Synopsis"
+                  type="textarea"
+                  as="textarea"
+                  rows={3}
+                  required={true}
+                  placeholder="Brief Synopsis of the Anime!"
+                  value={info}
+                  className="p-2"
+                  onChange={e => setInfo(e.target.value)}
+                />
+              </Form.Group>
 
-          <Form.Group>
-            <Form.Label className="outside-text-two ms-2">Synopsis</Form.Label>
-            <Form.Control
-              name="Synopsis"
-              type="text"
-              required={true}
-              placeholder="Brief Synopsis of the Anime!"
-              value={info}
-              className="p-2"
-              onChange={e => setInfo(e.target.value)}
-            />
-          </Form.Group>
-
-          <Form.Group>
-            <Form.Label className="outside-text-two ms-2">Review</Form.Label>
-            <Form.Control
-              name="review"
-              type="text"
-              required={true}
-              placeholder="What's Your Thought's on the Anime?"
-              value={review}
-              className="p-2"
-              onChange={e => setReview(e.target.value)}
-            />
-          </Form.Group>
-          <div className="d-flex justify-content-center">
-          <Button className="mt-3 btn-lg btn-post" variant="outline-danger"
-            onClick={handleSubmit}
-          >
-            Submit
-          </Button>
-          </div>
-        </Form>
+              <Form.Group as={Col} sm={12} lg={6}>
+                <Form.Label className="outside-text-two ms-2">Review</Form.Label>
+                {/* mt-lg-4 */}
+                <Form.Control
+                  name="review"
+                  as="textarea"
+                  rows={3}
+                  required={true}
+                  placeholder="What's Your Thought's on the Anime?"
+                  value={review}
+                  className="p-2"
+                  onChange={e => setReview(e.target.value)}
+                />
+              </Form.Group>
+            </Row>
+            <div className="d-flex justify-content-center">
+              <Button className="mt-3 btn-lg btn-post" variant="outline-danger"
+                onClick={handleSubmit}
+              >
+                Submit
+              </Button>
+            </div>
+          </Form>
+        </div>
+        <div>
+          <a href="https://idan-game.web.app/" target="_blank" rel="noreferrer"><Image id="homers-ghost" src={homerDrawing} /></a>
+        </div>
       </div>
-      <div>
-        <a href="https://idan-game.web.app/" target="_blank"><Image id="homers-ghost" src={homerDrawing} /></a>
-      </div>
-    </div>
     </>
 
   )
