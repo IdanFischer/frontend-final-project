@@ -16,7 +16,7 @@ const firebaseConfig = {
   appId: "1:1057508308524:web:661aafc027a50beec7c389"
 };
 
-export default function Signup({ user, setUser, setIsUser }) {
+export default function Login({ user, setUser, setIsUser }) {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
@@ -26,7 +26,8 @@ export default function Signup({ user, setUser, setIsUser }) {
     try {
       // const _user = await signInWithPopup(auth, provider)
       const provider = new GoogleAuthProvider()
-      await signInWithRedirect(auth, provider)
+      const result = await signInWithRedirect(auth, provider)
+      setUser(result.user) 
       toast.success("Logged in")
       navigate("/home")
     }
@@ -38,15 +39,20 @@ export default function Signup({ user, setUser, setIsUser }) {
   }
 
   const handleSubmit = async () => {
-    const _user = await signInWithEmailAndPassword(auth, email, password)
-      .catch(toast.error("Wrong Email or Password"))
-    setUser(_user)
+    try {
+      const _user = await signInWithEmailAndPassword(auth, email, password)
+      setUser(_user)
+
+    } 
+    catch {
+      (toast.error("Wrong Email or Password"))
+    }
   }
   return (
     <>
       <div className="background-image-login">
         <div className="form-container-login p-lg-3 p-md-3 p-sm-3">
-          <h1 className="outside-text-form ms-2">Login Here</h1>
+          <h1 className="outside-text-form ms-2">Login</h1>
           <Button type="primary" onClick={() => setIsUser(false)}>Sign Up</Button>
 
           <Form>

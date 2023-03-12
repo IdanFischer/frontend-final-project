@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify"
 
 export default function Signup({ setUser, setIsUser }) {
-  const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
   
   let navigate = useNavigate()
 
@@ -28,7 +28,7 @@ export default function Signup({ setUser, setIsUser }) {
   const handleSumbit = async () => {
     const _user = await createUserWithEmailAndPassword(auth, email, password)
       .catch(alert)
-    setUser(_user.user)
+    setUser(_user)
   }
     // const signupWithGoogle = async () => {
     //   const app = initializeApp(firebaseConfig);
@@ -43,7 +43,7 @@ export default function Signup({ setUser, setIsUser }) {
       <div className="background-image-login">
         <div className="form-container-login p-lg-3 p-md-3 p-sm-3">
           <h1 className="outside-text-form ms-2">Sign Up</h1>
-            <Button type="primary" onClick={() => setIsUser(true)}>Sign Up</Button>
+            <Button type="primary" onClick={() => setIsUser(true)}>Login</Button>
 
           <Form>
             <Form.Group>

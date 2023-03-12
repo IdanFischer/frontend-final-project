@@ -6,7 +6,7 @@ import AnimeNavbar from './components/AnimeNavbar';
 import AboutMe from './scenes/AboutMe.jsx';
 import Login from './scenes/Login.jsx';
 import Signup from './scenes/Signup.jsx';
-import { getAuth } from 'firebase/auth';
+import { browserSessionPersistence, getAuth, setPersistence } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 import { onAuthStateChanged } from 'firebase/auth';
 import './App.css';
@@ -30,6 +30,8 @@ function App() {
   const [user, setUser] = useState(false) 
   const [isUser, setIsUser] = useState(true)
 
+  // console.log(googleUser, user)
+
   useEffect(() => {
     // Listen for changes to the user's authentication state
     const unsubscribe = onAuthStateChanged(auth, (googleUser) => {
@@ -51,6 +53,8 @@ function App() {
         url={url}
         setUrl={setUrl}
         googleUser={googleUser}
+        setGoogleUser={setGoogleUser}
+        setUser={setUser}
         />
       <Routes>
         <Route path='post' element={user || googleUser

@@ -10,7 +10,7 @@ import { signOut } from 'firebase/auth';
 import "./animenavbar.css"
 import { toast } from 'react-toastify';
 
-export default function AnimeNavbar({ url, setUrl, user, googleUser }) {
+export default function AnimeNavbar({ url, setUrl, user, googleUser, setGoogleUser, setUser }) {
 
   let navigate = useNavigate()
 
@@ -18,17 +18,18 @@ export default function AnimeNavbar({ url, setUrl, user, googleUser }) {
     setUrl(e)
   }
 
-  const handleLogOut = () => {
-    try {
+  const handleLogout = () => {
       signOut(auth)
-      toast.success("Logged Out!")
-      navigate("/login")
-    }
-    catch(err) {
-      toast.error("Not Logged in")
-      console.error(err)
-    }
-  }
+      .then(() => {
+        setUser(false);
+        setGoogleUser(false);
+        navigate("/home")
+      })
+      .catch((error) => {
+        console.error(error);
+        toast.error("didnt work")
+      });
+  };
 
   // console.log("NavBar url: ", url)
   return (
@@ -38,19 +39,24 @@ export default function AnimeNavbar({ url, setUrl, user, googleUser }) {
         <Navbar.Toggle />
         <Navbar.Collapse>
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/home">Home</Nav.Link>
-            <Nav.Link as={Link} to="/post">Create</Nav.Link>
-            <Nav.Link as={Link} to="/aboutme">About Me</Nav.Link>
-            <NavDropdown title="Sort By" onSelect={handleSelectSort}>
-              <NavDropdown.Item eventKey="date">Date</NavDropdown.Item>
-              <NavDropdown.Item eventKey="rating">Rating</NavDropdown.Item>
+            <Nav.Link className='links' as={Link} to="/home">Home</Nav.Link>
+            <Nav.Link className='links' as={Link} to="/post">Create</Nav.Link>
+            <Nav.Link className='links' as={Link} to="/aboutme">About Me</Nav.Link>
+            <NavDropdown className='links' title="Sort By" onSelect={handleSelectSort}>
+              <NavDropdown.Item className='links' eventKey="date">Date</NavDropdown.Item>
+              <NavDropdown.Item className='links' eventKey="rating">Rating</NavDropdown.Item>
             </NavDropdown>
-            {!user ?
-              <Nav.Link as={Link} className="login-navbar" to="/login">Login</Nav.Link>
+            {!user && !googleUser ?
+              <Nav.Link as={Link} className='links' to="/login">Login</Nav.Link>
               :
-              <Nav.Link as={Button} onSubmit={handleLogOut} className="logout-navbar">Logout</Nav.Link>
-            }                          
-            <Nav.Item>{googleUser ? <p>Welcome {googleUser.displayName}</p> : <p>Welcome Guest!</p>}</Nav.Item>
+              <Nav.Link as={Button} onClick={handleLogout} className="logout-navbar">Logout</Nav.Link>
+            }
+            <Nav.Item>
+              {googleUser
+                ? <p className="username">Welcome {googleUser.displayName}</p>
+                : user
+                  ? <p className="username">{user.email}</p>
+                  : <p className="username">Welcome Guest!</p>}</Nav.Item>
           </Nav>
         </Navbar.Collapse>
       </Container>
