@@ -167,10 +167,10 @@ export default function AnimeEdit({ animeId, setAnimes, url }) {
           </div>
         </Modal.Body>
         <Modal.Footer className="justify-content-between">
-          <Button className="p-2 mt-3 btn-lg" onClick={handleClose}>
+          <Button className="p-2 btn-lg btn-edit" onClick={handleClose}>
             Close
           </Button>
-          <Button className="p-2 mt-3 btn-lg "
+          <Button className="p-2 btn-lg btn-save"
             onClick={handleEdit}>
             Save
           </Button>

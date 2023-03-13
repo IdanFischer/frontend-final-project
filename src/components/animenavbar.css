@@ -1,13 +1,32 @@
 .navbar {
-  scroll-margin-top: 50px; 
+  scroll-margin-top: 50px;
 }
 
 .username {
   font-size: 2em;
   letter-spacing: 0.02em;
   font-family: Bangers;
+  margin-bottom: 0px;
 }
 
-.links {  
+.brand-name {
+  font-size: 2em !important;
+  font-family: bangers;
+}
+
+.links {
   font-size: 1.5em !important;
+  font-family: bangers;
+}
+
+.login-navbar {
+  font-size: 1.5em !important;
+  font-family: bangers;
+
+}
+
+.logout-navbar {
+  font-size: 1.5em !important;
+  font-family: bangers;
+
 }

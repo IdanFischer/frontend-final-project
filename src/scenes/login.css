@@ -1,6 +1,6 @@
 .background-image-login {
   width: 100vw;
-  height: 93.6vh;
+  height: 89.4vh;
   background-image: url(../assets/images/background-anime-tree.webp);
   background-position: center;
   background-repeat: no-repeat;
@@ -20,41 +20,7 @@
 }
 
 .google-sign-in-button {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  justify-content: space-between;
-  -webkit-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  height: 100%;
-  position: relative;
-  width: 100%;
-  border-radius: 4px;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-transition: background-color .218s, border-color .218s;
-  transition: background-color .218s, border-color .218s;
-  background-color: #fff;
-  background-image: none;
-  border: 1px solid #dadce0;
-  color: #3c4043;
-  cursor: pointer;
-  font-family: "Google Sans", arial, sans-serif;
-  font-size: 14px;
-  height: 40px;
-  letter-spacing: 0.25px;
-  outline: none;
-  overflow: hidden;
-  padding: 0 12px;
-  position: relative;
-  text-align: center;
-  vertical-align: middle;
-  white-space: nowrap;
-  width: auto;
+  
 }
 
 .btn-login,

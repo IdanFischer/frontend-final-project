@@ -39,10 +39,6 @@ html {
   border: 10px solid red ;
 }
 
-
-
-
-
 .btn {
   --bs-btn-border-width: 0px !important;
 }

@@ -7,15 +7,6 @@ import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import './login.css'
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCVQ__HU1Zh4JKpVt7_UUut3sNITJlbbI0",
-  authDomain: "final-project-frontend-if.firebaseapp.com",
-  projectId: "final-project-frontend-if",
-  storageBucket: "final-project-frontend-if.appspot.com",
-  messagingSenderId: "1057508308524",
-  appId: "1:1057508308524:web:661aafc027a50beec7c389"
-};
-
 export default function Login({ user, setUser, setIsUser }) {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")

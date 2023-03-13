@@ -13,12 +13,12 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCT49fTgteRcw-vifnTotEh9w8_NaN_c5s",
-  authDomain: "simple-login-if.firebaseapp.com",
-  projectId: "simple-login-if",
-  storageBucket: "simple-login-if.appspot.com",
-  messagingSenderId: "439899236558",
-  appId: "1:439899236558:web:789e6055053e0922ce889f"
+  apiKey: "AIzaSyCVQ__HU1Zh4JKpVt7_UUut3sNITJlbbI0",
+  authDomain: "final-project-frontend-if.firebaseapp.com",
+  projectId: "final-project-frontend-if",
+  storageBucket: "final-project-frontend-if.appspot.com",
+  messagingSenderId: "1057508308524",
+  appId: "1:1057508308524:web:661aafc027a50beec7c389"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -30,7 +30,7 @@ function App() {
   const [user, setUser] = useState(false) 
   const [isUser, setIsUser] = useState(true)
 
-  // console.log(googleUser, user)
+  console.log(user)
 
   useEffect(() => {
     // Listen for changes to the user's authentication state
@@ -65,7 +65,9 @@ function App() {
               <Signup user={user} setUser={setUser} setIsUser={setIsUser}/>}>
         </Route>
 
-        {isUser
+        { user || googleUser
+        ? <Route path='login' element={<Home url={url}/>}></Route>
+        : isUser
           ? <Route path='login' element={
             <Login
               user={user}

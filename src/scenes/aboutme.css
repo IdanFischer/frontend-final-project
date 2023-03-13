@@ -1,0 +1,14 @@
+.background-aboutme {
+  width: 100vw;
+  height: 89.4vh;
+  background-image: url(../assets/images/background-anime-street-after.webp);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: scroll;
+}
+
+.aboutme-text {
+  color: white;
+}
