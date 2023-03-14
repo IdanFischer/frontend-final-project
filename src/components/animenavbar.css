@@ -3,7 +3,7 @@
 }
 
 .username {
-  font-size: 2em;
+  font-size: 2.5em;
   letter-spacing: 0.02em;
   font-family: Bangers;
   margin-bottom: 0px;
@@ -15,18 +15,18 @@
 }
 
 .links {
-  font-size: 1.5em !important;
+  font-size: 2em !important;
   font-family: bangers;
 }
 
 .login-navbar {
-  font-size: 1.5em !important;
+  font-size: 2em !important;
   font-family: bangers;
 
 }
 
 .logout-navbar {
-  font-size: 1.5em !important;
+  font-size: 2em !important;
   font-family: bangers;
 
 }

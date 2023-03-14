@@ -6,13 +6,21 @@
 }
 
 .outside-text-edit-form {
-  color: crimson;
-  font-weight: 700;
-  font-size: clamp(1.9rem, 2.3vw, 2.5rem) !important;
+  font-weight: 900;
+  font-size: clamp(2.9rem, 3.3vw, 3.5rem) !important;
+  font-family: bangers;
+  width: 100%;
+  text-align: center;
+  color: #0f616d;
 }
 
-.modal-body-edit {
-  background-color: plum;
+.delete-image {
+  transition: transform 0.3s ease-in-out;
+}
+
+.delete-image:hover {
+  transform: scale(1.1);
+  filter: invert(1);
 }
 
 .modal-head-edit {

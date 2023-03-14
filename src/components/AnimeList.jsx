@@ -31,9 +31,9 @@ export default function AnimeList({ animes, setAnimes, url }) {
         <h1 className="outside-text text-center">Loading...</h1>
         :
         <Container fluid>
-          <Row>
+          <Row className="justify-content-center">
             {animes.map((element) => (
-              <Col sm={6} md={4} lg={3} key={element._id}>
+              <Col sm={11} lg={3} key={element._id}>
                 <Card className="each-card border border-2 border-primary">
                   <Image
                     onClick={() => { setSelectedAnime(element); handleShow() }} src={element.image} className="anime-image"
@@ -53,6 +53,11 @@ export default function AnimeList({ animes, setAnimes, url }) {
                       setAnimes={setAnimes}
                       selectedAnime={selectedAnime}
                       animeId={element._id}
+                      currentTitle={element.title}
+                      currentSynopsis={element.info}
+                      currentImage={element.image}
+                      currentRating={element.rating}
+                      currentReview={element.review}
                     />
                     </Col>
                     

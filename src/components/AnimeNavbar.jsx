@@ -37,12 +37,11 @@ export default function AnimeNavbar({ url, setUrl, user, googleUser, setGoogleUs
   return (
     <Navbar bg="info" expand="lg" className="sticky-top">
       <Container fluid>
-        <Navbar.Brand as={Link} to="/home" className='brand-name'>Anime Avenue</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/home" className='brand-name'><img src='./images/idan-logo.webp' /></Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>
           <Nav className="me-auto">
             <Nav.Link className='links' as={Link} to="/home">Home</Nav.Link>
-            <Nav.Link className='links' as={Link} to="/aboutme">About Me</Nav.Link>
             <NavDropdown className='links' title="Sort By" onSelect={handleSelectSort}>
               <NavDropdown.Item className='links' eventKey="date">Date</NavDropdown.Item>
               <NavDropdown.Item className='links' eventKey="rating">Rating</NavDropdown.Item>

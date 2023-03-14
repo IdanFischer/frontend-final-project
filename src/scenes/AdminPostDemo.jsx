@@ -8,13 +8,12 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import homerDrawing from "../assets/images/HomerDrawing.svg"
 import "./adminpost.css"
-import { Link } from "react-router-dom";
 
 export default function AdminPost({ setAnimes }) {
-  const [title, setTitle] = useState("")
-  const [info, setInfo] = useState("")
+  const [title, setTitle] = useState("Dragon Ball Z")
+  const [info, setInfo] = useState("Dragon Ball Z follows the adventures of the adult Goku who, along with his companions, defends the earth against an assortment of villains ranging from intergalactic space fighters and conquerors, unnaturally powerful androids and near indestructible magical creatures.")
   const [image, setImage] = useState()
-  const [review, setReview] = useState("")
+  const [review, setReview] = useState("In Dragon Ball Z, we witness the escapades of Goku as an adult, who fights alongside his comrades to protect the Earth against a variety of adversaries. These include interstellar warriors and conquerors, as well as artificially enhanced androids and nearly invincible magical creatures.")
   const [rating, setRating] = useState("")
 
   function convertFile(files) {
@@ -72,14 +71,13 @@ export default function AdminPost({ setAnimes }) {
   };
 
 
-
   return (
     <>
       <div className="background-image-post">
         <div className="form-container p-lg-3 p-md-3 p-sm-3">
-          <h1 className="outside-text-form ms-2"><Link to="/postdemo" className="regular-text-link">Add a Card Here!</Link></h1>
+          <h1 className="outside-text-form ms-2">Add a Card Here!</h1>
           <Form>
-            <Form.Group>
+            <Form.Group >
               <Form.Label className="outside-text-three ms-2">Title</Form.Label>
               <Form.Control
                 name="title"

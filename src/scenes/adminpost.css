@@ -40,6 +40,13 @@
 
 }
 
+.regular-text-link:link,
+.regular-text-link:visited {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .outside-text-three {
   font-size: clamp(1.6rem, 2vw, 2.3em);
   font-family: Bangers;

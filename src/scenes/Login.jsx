@@ -6,6 +6,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import './login.css'
+import { Col, Row } from "react-bootstrap";
 
 export default function Login({ user, setUser, setIsUser }) {
   const [email, setEmail] = useState("")
@@ -18,7 +19,7 @@ export default function Login({ user, setUser, setIsUser }) {
       // const _user = await signInWithPopup(auth, provider)
       const provider = new GoogleAuthProvider()
       const result = await signInWithRedirect(auth, provider)
-      setUser(result.user) 
+      setUser(result.user)
       toast.success("Logged in")
       navigate("/home")
     }
@@ -34,7 +35,7 @@ export default function Login({ user, setUser, setIsUser }) {
       const _user = await signInWithEmailAndPassword(auth, email, password)
       setUser(_user)
 
-    } 
+    }
     catch {
       (toast.error("Wrong Email or Password"))
     }
@@ -44,8 +45,6 @@ export default function Login({ user, setUser, setIsUser }) {
       <div className="background-image-login">
         <div className="form-container-login p-lg-3 p-md-3 p-sm-3">
           <h1 className="outside-text-form ms-2">Login</h1>
-          <Button type="primary" onClick={() => setIsUser(false)}>Sign Up</Button>
-
           <Form>
             <Form.Group>
               <Form.Label className="outside-text-three ms-2">Email</Form.Label>
@@ -72,20 +71,26 @@ export default function Login({ user, setUser, setIsUser }) {
                 onChange={e => setPassword(e.target.value)}
               />
             </Form.Group>
-
-            <div className="d-flex justify-content-center">
-              <Button className="mt-3 btn-lg btn-login" variant="outline-danger"
-                onClick={handleSubmit}
-              >
-                Login
-              </Button>
-            </div>
+            <Row className="d-flex justify-content-between">
+              <Col sm={4} className="d-flex justify-content-center">
+                <Button
+                  className="mt-3 btn-lg btn-google" variant="outline-danger"
+                  onClick={loginWithGoogle}
+                >Google</Button>
+              </Col>
+              <Col sm={4} className="d-flex justify-content-center">
+                <Button className="mt-3 btn-lg btn-login" variant="outline-danger"
+                  onClick={handleSubmit}
+                >
+                  Login
+                </Button>
+              </Col>
+              <Col sm={4} className="d-flex justify-content-center">
+                <Button className="mt-3 btn-lg btn-signup" variant="outline-danger" onClick={() => setIsUser(false)}>Sign Up</Button>
+              </Col>
+            </Row>
           </Form>
         </div>
-        <Button
-          className="google-sign-in-button"
-          onClick={loginWithGoogle}
-        >Google</Button>
       </div>
     </>
   )

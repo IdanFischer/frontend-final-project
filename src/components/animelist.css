@@ -1,6 +1,6 @@
 .background-image-list {
-  /* width: 100vw; */
-  height: 89.4vh;
+  /* width: 100%; */
+  height: 89.3vh;
   background-image: url(../assets/images/background-anime-city.webp);
   background-position: center;
   background-repeat: no-repeat;
@@ -23,11 +23,17 @@
   /* border: 3px solid cyan; */
 }
 
-.each-anime-title {
-  font-size: clamp(2rem, 2.5vw, 3.5rem) !important;
-  font-family: bangers;
-  text-shadow: -3px -3px 1px #F8F005, 3px 3px 1px #00f6d1;
+.card {
+  background-color:rgb(205, 227, 159) !important;
+}
 
+.each-anime-title {
+  font-size: clamp(2.9rem, 3.3vw, 3.5rem) !important;
+  font-family: bangers;
+  color: #0f616d;
+  width: 100%;
+  text-align: center;
+  /* text-shadow: -3px -3px 1px #F8F005, 3px 3px 1px hsla(23, 100%, 48%, 0.832); */
 }
 
 .anime-card-title {
@@ -43,14 +49,10 @@
 }
 
 .each-anime-body-p {
-  color: rgb(18, 177, 229);
-  font-size: clamp(1.1rem, 1.2vw, 1.9rem);
+  color: rgb(12, 73, 94);
+  font-size: clamp(1.2rem, 1.3vw, 2.0rem);
   font-family: anime_aceregular;
   font-weight: 600;
-}
-
-.modal-body-each-anime {
-  background-color: lightyellow;
 }
 
 .btn-list,

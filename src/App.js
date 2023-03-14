@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from './scenes/Home.jsx';
 import AdminPost from './scenes/AdminPost';
+import AdminPostDemo from './scenes/AdminPostDemo';
 import AnimeNavbar from './components/AnimeNavbar';
 import AboutMe from './scenes/AboutMe.jsx';
 import Login from './scenes/Login.jsx';
@@ -27,7 +28,7 @@ export const auth = getAuth(app)
 function App() {
   const [url, setUrl] = useState("date")
   const [googleUser, setGoogleUser] = useState(false)
-  const [user, setUser] = useState(false) 
+  const [user, setUser] = useState(false)
   const [isUser, setIsUser] = useState(true)
 
   console.log(user)
@@ -55,33 +56,40 @@ function App() {
         googleUser={googleUser}
         setGoogleUser={setGoogleUser}
         setUser={setUser}
-        />
+      />
       <Routes>
         <Route path='post' element={user || googleUser
           ? <AdminPost />
           : isUser
             ? <Login user={user} setUser={setUser} setIsUser={setIsUser} />
-            : 
-              <Signup user={user} setUser={setUser} setIsUser={setIsUser}/>}>
+            :
+            <Signup user={user} setUser={setUser} setIsUser={setIsUser} />}>
         </Route>
 
-        { user || googleUser
-        ? <Route path='login' element={<Home url={url}/>}></Route>
-        : isUser
-          ? <Route path='login' element={
-            <Login
-              user={user}
-              setUser={setUser}
-              setIsUser={setIsUser}
-            />}></Route>
-          : <Route path='login' element={
-            <Signup
-              user={user}
-              setUser={setUser}
-              setIsUser={setIsUser}
-            />}></Route>
+        <Route path='postdemo' element={user || googleUser
+          ? <AdminPostDemo />
+          : isUser
+            ? <Login user={user} setUser={setUser} setIsUser={setIsUser} />
+            :
+            <Signup user={user} setUser={setUser} setIsUser={setIsUser} />}>
+        </Route>
+
+        {user || googleUser
+          ? <Route path='login' element={<Home url={url} />}></Route>
+          : isUser
+            ? <Route path='login' element={
+              <Login
+                user={user}
+                setUser={setUser}
+                setIsUser={setIsUser}
+              />}></Route>
+            : <Route path='login' element={
+              <Signup
+                user={user}
+                setUser={setUser}
+                setIsUser={setIsUser}
+              />}></Route>
         }
-        <Route path='aboutme' element={<AboutMe />}></Route>
         <Route path='login' element={
           <Login
             setIsUser={setIsUser}

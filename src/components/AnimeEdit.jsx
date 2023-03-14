@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Button from "react-bootstrap/Button"
 import Modal from "react-bootstrap/Modal"
 import Image from "react-bootstrap/Image"
@@ -7,7 +7,7 @@ import Dropdown from "react-bootstrap/Dropdown"
 import { toast } from "react-toastify"
 import "./animeedit.css"
 
-export default function AnimeEdit({ animeId, setAnimes, url }) {
+export default function AnimeEdit({ animeId, setAnimes, url, currentTitle, currentReview, currentSynopsis, currentImage, currentRating }) {
 
   const [title, setTitle] = useState("")
   const [info, setInfo] = useState("")
@@ -16,14 +16,17 @@ export default function AnimeEdit({ animeId, setAnimes, url }) {
   const [rating, setRating] = useState("")
   const [show, setShow] = useState(false)
 
+  useEffect(() => {
+    setTitle(currentTitle)
+    setInfo(currentSynopsis)
+    setRating(currentRating)
+    setImage(currentImage)
+    setReview(currentReview)
+  }, [])
+
   const handleShow = () => setShow(true)
   const handleClose = () => {
     setShow(false)
-    setTitle("")
-    setInfo("")
-    setImage("")
-    setReview("")
-    setRating("")
   }
 
   function convertFile(files) {
@@ -66,11 +69,6 @@ export default function AnimeEdit({ animeId, setAnimes, url }) {
       .then((data) => {
         setAnimes(data);
         toast.success("Anime was updated successfully!");
-        setTitle("");
-        setInfo("");
-        setImage("");
-        setReview("");
-        setRating("");
       })
       .catch((error) => {
         console.error(error);
@@ -79,7 +77,7 @@ export default function AnimeEdit({ animeId, setAnimes, url }) {
   };
   return (
     <>
-      <Button onClick={handleShow} variant="text">
+      <Button onClick={handleShow} variant="text" className="delete-image">
         <Image
           src="https://www.freeiconspng.com/thumbs/edit-icon-png/edit-new-icon-22.png"
           width="30px"
@@ -87,7 +85,7 @@ export default function AnimeEdit({ animeId, setAnimes, url }) {
       </Button>
       <Modal show={show} onHide={handleClose} size="xl">
         <Modal.Header className="modal-head-edit" closeButton>
-          <Modal.Title className="outside-text-edit-form ms-2">Edit Your Card Here!</Modal.Title>
+          <Modal.Title className="outside-text-edit-form ms-2">Edit Card</Modal.Title>
         </Modal.Header>
         <Modal.Body className="modal-body-edit">
           <div className="form-container-edit">
@@ -131,7 +129,7 @@ export default function AnimeEdit({ animeId, setAnimes, url }) {
                   name="Image"
                   type="file"
                   required={true}
-                  placeholder="Cover of the Anime"
+                  placeholder={currentImage}
                   className="p-2"
                   onChange={e => convertFile(e.target.files)}
                 />
@@ -167,10 +165,10 @@ export default function AnimeEdit({ animeId, setAnimes, url }) {
           </div>
         </Modal.Body>
         <Modal.Footer className="justify-content-between">
-          <Button className="p-2 btn-lg btn-edit" onClick={handleClose}>
+          <Button className="p-2 btn-lg btn-edit" variant="outline-info" onClick={handleClose}>
             Close
           </Button>
-          <Button className="p-2 btn-lg btn-save"
+          <Button className="p-2 btn-lg btn-save" variant="outline-danger"
             onClick={handleEdit}>
             Save
           </Button>
